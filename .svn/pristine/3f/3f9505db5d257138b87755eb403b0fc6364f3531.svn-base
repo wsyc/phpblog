@@ -1,0 +1,178 @@
+<?php /*a:3:{s:54:"/Users/chongyan/Desktop/easyswoole/App/Views/info.html";i:1531751650;s:56:"/Users/chongyan/Desktop/easyswoole/App/Views/header.html";i:1531748892;s:56:"/Users/chongyan/Desktop/easyswoole/App/Views/footer.html";i:1529591398;}*/ ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><?php echo htmlentities($res['title']); ?>-内容页_淙淙个人博客 -  php程序博客</title>
+<meta name="keywords" content="个人博客,淙淙个人博客, 淙淙" />
+<meta name="description" content="淙淙个人博客。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://oh4icgptu.bkt.clouddn.com/css/base.css" rel="stylesheet">
+<link href="http://oh4icgptu.bkt.clouddn.com/css/index.css" rel="stylesheet">
+<link href="http://oh4icgptu.bkt.clouddn.com/css/m.css" rel="stylesheet">
+<script src="http://oh4icgptu.bkt.clouddn.com/js/jquery-2.1.1.min.js"></script>
+<!--[if lt IE 9]>
+<script src="http://oh4icgptu.bkt.clouddn.com/js/modernizr.js"></script>
+<![endif]-->
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<header>
+    <div class="tophead">
+        <div class="logo"><a href="/">淙淙个人博客</a></div>
+        <div id="mnav">
+            <h2><span class="navicon"></span></h2>
+            <ul>
+                <li><a href="index">网站首页</a></li>
+                <li><a href="about">关于我</a></li>
+                <!--<li><a href="share">项目分享</a></li>-->
+                <li><a href="lists">学无止境</a></li>
+                <!--<li><a href="info">个人日记</a></li>-->
+                <li><a href="gbook">留言</a></li>
+            </ul>
+        </div>
+        <nav class="topnav" id="topnav">
+            <ul>
+                <li><a href="index">网站首页</a></li>
+                <li><a href="about">关于我</a></li>
+                <!--<li><a href="share">模板分享</a></li>-->
+                <li><a href="lists">学无止境</a></li>
+                <!--<li><a href="info">个人日记</a></li>-->
+                <li><a href="gbook">留言</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<article>
+  <h1 class="t_nav"><span>您现在的位置是：首页 > 学无止境 > <?php echo $res['name']; ?></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">慢生活</a></h1>
+  <div class="infos">
+    <h2><?php echo htmlentities($res['title']); ?></h2>
+    <div class="newsview">
+      <?php echo $res['content']; ?>
+        &nbsp; </div>
+    </div>
+    <div class="share"> </div>
+    <div class="nextinfo">
+      <p>上一篇：<a href="<?php if(!empty($last)){  ?>/info?id=<?php echo $last[0]['id'];}else{echo '#';} ?> "><?php if(!empty($last)){ ?><?php echo $last[0]['title'];}else{echo '无';} ?></a></p>
+      <p>下一篇：<a href="<?php if(!empty($next)){  ?>/info?id=<?php echo $next[0]['id'];}else{echo '#';} ?> "><?php if(!empty($next)){ ?><?php echo $next[0]['title'];}else{echo '无';} ?></a></p>
+    </div>
+    <!--<div class="otherlink">-->
+      <!--<h2>相关文章</h2>-->
+      <!--<ul>-->
+        <!--<li><a href="/jstt/bj/2015-01-09/740.html" title="【匆匆那些年】总结个人博客经历的这四年…">【匆匆那些年】总结个人博客经历的这四年…</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <div class="news_pl">
+      <h2>文章评论</h2>
+      <ul>
+        <div class="gbko"> </div>
+      </ul>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <!--<div class="lmnav">-->
+      <!--<h2 class="hometitle">栏目导航</h2>-->
+      <!--<ul class="navbor">-->
+        <!--<li><a href="#">关于我</a></li>-->
+        <!--<li><a href="share.html">模板分享</a>-->
+          <!--<ul>-->
+            <!--<li><a href="list.html">个人博客模板</a></li>-->
+            <!--<li><a href="#">HTML5模板</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li><a href="list.html">学无止境</a>-->
+          <!--<ul>-->
+            <!--<li><a href="list.html">学习笔记</a></li>-->
+            <!--<li><a href="#">HTML5+CSS3</a></li>-->
+            <!--<li><a href="#">网站建设</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li><a href="#">慢生活</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="paihang">-->
+      <!--<h2 class="hometitle">点击排行</h2>-->
+      <!--<ul>-->
+        <!--<li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>-->
+          <!--<p><i><img src="http://oh4icgptu.bkt.clouddn.com/images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="cloud">-->
+      <!--<h2 class="hometitle">标签云</h2>-->
+      <!--<ul>-->
+        <!--<a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="paihang">-->
+      <!--<h2 class="hometitle">站长推荐</h2>-->
+      <!--<ul>-->
+        <!--<li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>-->
+          <!--<p><i><img src="http://oh4icgptu.bkt.clouddn.com/images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>-->
+        <!--</li>-->
+
+      <!--</ul>-->
+    <!--</div>-->
+    <div class="weixin">
+      <h2 class="hometitle">官方微信</h2>
+      <ul>
+        <img src="http://oh4icgptu.bkt.clouddn.com/images/wx.png">
+      </ul>
+    </div>
+    <!--<div class="ad" id="left_flow2"> <img src="http://oh4icgptu.bkt.clouddn.com/images/ad.jpg"> </div>-->
+  </div>
+</article>
+<footer>
+    <p>Design by <a href="/">淙淙个人博客</a>
+        <!--<a href="/">蜀ICP备11002373号-1</a></p>-->
+</footer>
+<script src="http://oh4icgptu.bkt.clouddn.com/js/nav.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(function() { 
+    var elm = jQuery('#left_flow2'); 
+    var startPos = jQuery(elm).offset().top; 
+    jQuery.event.add(window, "scroll", function() { 
+        var p = jQuery(window).scrollTop(); 
+        jQuery(elm).css('position',((p) > startPos) ? 'fixed' : ''); 
+
+        jQuery(elm).css('top',((p) > startPos) ? '0' : '');
+    }); 
+}); 
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data:
+            {
+                items: <?php echo $list; ?>
+    }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>首页_淙淙个人博客 -  php程序博客</title>
+<meta name="keywords" content="个人博客,淙淙个人博客, 淙淙" />
+<meta name="description" content="淙淙个人博客" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="block">
+        <span class="demonstration">页数较少时的效果</span>
+        <el-pagination
+                layout="prev, pager, next"
+                :total="50">
+        </el-pagination>
+    </div>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data:
+            {
+                items: {php}echo $list;{/php}
+    }
+    })
+</script>
+</html>

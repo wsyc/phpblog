@@ -1,0 +1,205 @@
+<?php /*a:1:{s:61:"/Users/chongyan/Desktop/easyswoole/App/Views/admin/login.html";i:1530626670;}*/ ?>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--&lt;!&ndash; import CSS &ndash;&gt;-->
+  <!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+  <!--<template>-->
+    <!--<el-row :gutter="20">-->
+      <!--<el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+      <!--<el-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></el-col>-->
+    <!--</el-row>-->
+    <!--<el-row :gutter="20">-->
+      <!--<el-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></el-col>-->
+      <!--<el-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></el-col>-->
+    <!--</el-row>-->
+    <!--<el-row :gutter="20">-->
+      <!--<el-col :span="12" :offset="6"><div class="grid-content bg-purple"></div></el-col>-->
+    <!--</el-row>-->
+
+    <!--<style>-->
+      <!--.el-row {-->
+        <!--margin-bottom: 20px;-->
+      <!--&:last-child {-->
+         <!--margin-bottom: 0;-->
+       <!--}-->
+      <!--}-->
+      <!--.el-col {-->
+        <!--border-radius: 4px;-->
+      <!--}-->
+      <!--.bg-purple-dark {-->
+        <!--background: #99a9bf;-->
+      <!--}-->
+      <!--.bg-purple {-->
+        <!--background: #d3dce6;-->
+      <!--}-->
+      <!--.bg-purple-light {-->
+        <!--background: #e5e9f2;-->
+      <!--}-->
+      <!--.grid-content {-->
+        <!--border-radius: 4px;-->
+        <!--min-height: 36px;-->
+      <!--}-->
+      <!--.row-bg {-->
+        <!--padding: 10px 0;-->
+        <!--background-color: #f9fafc;-->
+      <!--}-->
+    <!--</style>-->
+  <!--</template>-->
+<!--</div>-->
+<!--</body>-->
+<!--<style>-->
+  <!--.el-col {-->
+    <!--border-radius: 4px;-->
+  <!--}-->
+  <!--.bg-purple-dark {-->
+    <!--background: #99a9bf;-->
+  <!--}-->
+  <!--.bg-purple {-->
+    <!--background: #d3dce6;-->
+  <!--}-->
+  <!--.bg-purple-light {-->
+    <!--background: #e5e9f2;-->
+  <!--}-->
+  <!--.grid-content {-->
+    <!--border-radius: 4px;-->
+    <!--min-height: 36px;-->
+  <!--}-->
+<!--</style>-->
+<!--&lt;!&ndash; import Vue before Element &ndash;&gt;-->
+<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+<!--&lt;!&ndash; import JavaScript &ndash;&gt;-->
+<!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+<!--<script>-->
+    <!--new Vue({-->
+        <!--el: '#app',-->
+        <!--data:-->
+            <!--{-->
+                <!--show: false-->
+            <!--},-->
+        <!--mounted(),-->
+        <!--methods: //页面加载后调用-->
+            <!--{-->
+                <!--open() {-->
+                    <!--this.$message('这是一条消息提示');-->
+                <!--},-->
+            <!--},-->
+        <!--computed:{  //读取data-->
+            <!--showlist: {-->
+                <!--get: function () {-->
+                    <!--return this.show-->
+                <!--},-->
+                <!--set: function () {-->
+                    <!--return this.show=true-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+
+    <!--})-->
+<!--</script>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>后台登录</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <style>
+    .el-row {
+      margin-bottom: 20px;
+    &:last-child {
+       margin-bottom: 0;
+     }
+    }
+    .login-box {
+      margin-top:20%;
+      margin-left:40%;
+    }
+  </style>
+</head>
+<body>
+<div class="login-box" id="app" >
+  <el-row>
+    <el-col :span="12" :offset="4">
+      用户登录
+      <!--<i class="el-icon-edit"></i>-->
+    </el-col>
+  </el-row><el-row>
+  <el-col :span="10">
+    <el-input id="name"  v-model="name" placeholder="请输入帐号">
+      <template slot="prepend">帐号</template>
+    </el-input>
+  </el-col>
+</el-row>
+  <el-row>
+    <el-col :span="10">
+      <el-input id="password" v-model="password" type="password" placeholder="请输入密码">
+        <template slot="prepend">密码</template>
+      </el-input>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="10">
+      <el-button id="login" v-on:click="check" style="width:100%" type="primary">登录</el-button>
+    </el-col>
+  </el-row>
+</div>
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el : '#app',
+        data : {
+            name : '',
+            password : ''
+        },
+        methods : {
+            check : function(event){
+                //获取值
+                var name = this.name;
+                var password = this.password;
+                if(name == '' || password == ''){
+                    this.$message({
+                        message : '账号或密码为空！',
+                        type : 'error'
+                    })
+                    return;
+                }
+                $.ajax({
+                    url : '/admin/login/login',
+                    type : 'post',
+                    data : {
+                        name : name,
+                        password : password
+                    },
+                    success : function(data) {
+                        var result = data.result;
+                        if(result == 'true' || result == true){
+                            alert("登录成功");
+                            window.location.href = "/admin/index/index";
+                        }else {
+                            alert("登录失败");
+                        }
+                    },
+                    error : function(data) {
+                        alert(data);
+                    },
+                    dataType : 'json',
+                })
+            }
+        }
+    })
+
+</script>
+</html>

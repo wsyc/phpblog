@@ -1,0 +1,201 @@
+<?php /*a:1:{s:44:"/var/www/html/App/Views/admin/index/add.html";i:1530798270;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--<el-container style="position:absolute; left:0; top:0; width:100%;height:100%;">-->
+
+      <el-container style="position:absolute; left:0; top:0; width:100%;height:100%;">
+        <el-header>淙淙的个人后台</el-header>
+        <el-container>
+          <el-aside width="200px">
+
+
+            <el-menu
+                    default-active="/admin/index/index"
+                    class="el-menu-vertical-demo"
+                    @open="handleOpen"
+                    @close="handleClose"
+                    @select="url"
+            >
+              <el-menu-item index="/admin/index/index">
+                <i class="el-icon-menu"></i>
+                <span slot="title">内容</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/type/index">
+                <i class="el-icon-menu"></i>
+                <span slot="title" @click="url('user/')">分类</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/log/index">
+                <i class="el-icon-menu"></i>
+                <span slot="title">日记</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/about/index">
+                <i class="el-icon-menu"></i>
+                <span slot="title">简介</span>
+              </el-menu-item>
+            </el-menu>
+            </el-col>
+
+
+          </el-aside>
+          <el-container>
+            <el-main>
+              <el-col :span="6"><el-input v-model="title" placeholder="标题"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="content" placeholder="详情"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="sort_id" placeholder="排序id"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="view" placeholder="点击数"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="tag" placeholder="标签"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="is_delete" placeholder="是否删除"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="is_top" placeholder="是否置顶"></el-input></el-col><br/><br/>
+              <el-col :span="6"><el-input v-model="type_id" placeholder="分类"></el-input></el-col><br/><br/>
+              <!--<el-select v-model="value" placeholder="请选择分类">-->
+                <!--<el-option-->
+                        <!--v-for="item in options"-->
+                        <!--:key="item.value"-->
+                        <!--:label="item.label"-->
+                        <!--:value="item.value">-->
+                <!--</el-option>-->
+              </el-select>
+              <el-col :span="6"><el-input v-model="pic" placeholder="封面"></el-input></el-col>
+
+              <el-button v-on:click="check">默认按钮</el-button>
+            </el-main>
+            <el-footer>ccong版权</el-footer>
+          </el-container>
+        </el-container>
+      </el-container>
+
+
+</div>
+<style>
+  .el-col {
+    line-height: 20px;
+    height: 40px;
+    border-radius: 4px;
+  }
+  .el-select{
+    height: 20px;
+  }
+  .el-header, .el-footer {
+    background-color: #CCFFCC;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    /*line-height: 20px;*/
+  }
+
+</style>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:
+            {
+                title :"",
+                content :"",
+                sort_id :"",
+                view :"",
+                tag :"",
+                is_delete :"",
+                is_top :"",
+                type_id :"",
+                pic :""
+
+                // options: [{
+                //     value: '选项1',
+                //     label: '黄金糕'
+                // }, {
+                //     value: '选项2',
+                //     label: '双皮奶'
+                // }, {
+                //     value: '选项3',
+                //     label: '蚵仔煎'
+                // }, {
+                //     value: '选项4',
+                //     label: '龙须面'
+                // }, {
+                //     value: '选项5',
+                //     label: '北京烤鸭'
+                // }],
+                // value: ''
+            },
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            url(key, keyPath) {
+                window.location.href = key;
+                console.log(key, keyPath);
+            },
+            check : function(event){
+                //获取值
+                var title = this.title;
+                var content = this.content;
+                var sort_id = this.sort_id;
+                var view = this.view;
+                var tag = this.tag;
+                var is_delete = this.is_delete;
+                var is_top = this.is_top;
+                var type_id = this.type_id;
+                var pic = this.pic;
+
+                $.ajax({
+                    url : '/admin/index/add',
+                    type : 'post',
+                    data : {
+                         title : title,
+                         content : content,
+                         sort_id : sort_id,
+                         view : view,
+                         tag : tag,
+                         is_delete : is_delete,
+                         is_top : is_top,
+                         type_id : type_id,
+                         pic : pic
+                    },
+                    success : function(data) {
+                        var result = data.result;
+                        if(result == 'true' || result == true){
+                            alert("新建成功");
+                            window.location.href = "/admin/index/index";
+                        }else {
+                            alert("新建失败");
+                        }
+                    },
+                    error : function(data) {
+                        alert(data);
+                    },
+                    dataType : 'json'
+                })
+            }
+        }
+    })
+</script>
+</html>
